@@ -21,7 +21,7 @@ spec:
   - host: nginx.example.com  # Replace with your domain for Nginx
     http:
       paths:
-      - path: /
+      - path: /8080
         pathType: Prefix
         backend:
           service:
