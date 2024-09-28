@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: studentapp
   labels:
-    app: nginx
+    app: studentapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx
+      app: studentapp
   template:
     metadata:
       labels:
-        app: nginx
+        app: studentapp
     spec:
       containers:
-      - name: nginx-container
-        image: nginx:latest  # Latest Nginx image
+      - name: http
+        image: gauravgadilohar/op
         ports:
         - containerPort: 80  # Default HTTP port for Nginx
         resources:

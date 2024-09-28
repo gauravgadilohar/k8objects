@@ -1,36 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: microservices-ingress
+  name: nginxingress
   annotations:
-    # For AWS ALB (Application Load Balancer)
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    
 spec:
   rules:
-  - host: tomcat.example.com  # Replace with your domain for Tomcat
+  - host: 
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: tomcat-service
-            port:
+            name: studentapp
+            port: 
               number: 8080
-  - host: nginx.example.com  # Replace with your domain for Nginx
-    http:
-      paths:
-      - path: /8080
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx-service
-            port:
-              number: 80
-  # Optional TLS block for HTTPS
-  # tls:
-  # - hosts:
-  #   - tomcat.example.com
-  #   - nginx.example.com
-  #   secretName: tls-secret  # Name of the Kubernetes secret containing TLS certificates
+  
